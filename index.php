@@ -1,12 +1,15 @@
-<?php 
-require_once "./config/config.php";
-require_once "./core/database.php";
-require_once "./app/Models/UserModel.php";
-require_once "./app/Controllers/UserController.php";
-$user = new UserController();
-$user->index();
-echo "<pre>";
-print_r($user->index());
-echo "</pre>";
-
-?>
+<?php
+foreach (glob(__DIR__ . "/config/*.php") as $filename) {
+    require_once $filename;
+}
+foreach (glob(__DIR__ . "/core/*.php") as $filename) {
+    require_once $filename;
+}
+foreach (glob(__DIR__ . "/app/Models/*.php") as $filename) {
+    require_once $filename;
+}
+foreach (glob(__DIR__ . "/app/Controllers/*.php") as $filename) {
+    require_once $filename;
+}
+$users = new UserController();
+$users -> index();
